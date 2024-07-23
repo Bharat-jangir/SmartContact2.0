@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org"
+      th:fragment="parent(content,title,script)"
+      class=""
+>
+<head>
+
+    <meta charset="UTF-8">
+    <title th:replace="${title}">Title</title>
+    <link rel="stylesheet" href="#" th:href="@{'/css/output.css'}">
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+          rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.css"
+          rel="stylesheet"/>
+    <link rel="stylesheet" data-th-href="@{'/css/style.css'}"/>
+
+</head>
+
+<body>
+<div id="main" class="bg-white dark:bg-gray-900 text-white">
+    <!-------common header------>
+
+<!--    navbar if user is loggedIn-->
+    <div data-th-if="${loggedInUser}">
+        <div th:replace="~{user/user_navbar::user_navbar}"></div>
+    </div>
+
+
+<!--    navbar if user is not loggedIn-->
+    <div data-th-unless="${loggedInUser}">
+        <div th:replace="~{navbar::navbar}"></div>
+    </div>
+
+
+    <!-----main content---->
+    <div class="p-4">
+        <section th:replace="${content}"></section>
+    </div>
+
+    <!----common footer---->
+
+    <div class="p-4">Footer:bharat is learning</div>
+
+</div>
+
+<th:block th:replace="${script}"></th:block>
+<script th:src="@{/js/script.js}"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.4.1/dist/flowbite.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{base::parent(~{::#main},~{::title},~{::script})}">
+<head>
+    <meta charset="UTF-8">
+    <title>User Profile</title>
+</head>
+<body>
+<div id="main"  class="bg-white dark:bg-gray-900 text-white sm:pl-64 pt-20">
+
+    <!--    sidebar if user is loggedIn-->
+    <div data-th-if="${loggedInUser}">
+        <div th:replace="~{user/sidebar::sidebar}"></div>
+    </div>
+
+    <div class="flex justify-center text-xl">
+        <h1>Welcome to Profile</h1>
+    </div>
+</div>
+
+<script>
+    console.log("hello");
+</script>
+</body>
+</html>
